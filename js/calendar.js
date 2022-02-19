@@ -21,7 +21,6 @@ function next() {
     } else if (loaded == "year") {
 
     } else if (loaded == "day") {
-        console.log("next day");
         if(getDaysInMonth(currentMonth,currentYear) == currentDay ){
             currentDay = 1;
             if(currentMonth == 11){
@@ -70,44 +69,54 @@ function getDaysInMonth(month, year) {
 }
 
 function addDaysToMonth(elementName, day, month, year) {
-    let newDate = new Date(year, month, day);
-    let previousMonth = getDaysInMonth(month, year);
-    let daysInMonth = getDaysInMonth(month + 1, year);
-    let element = document.getElementById(elementName);
-    let beginDay = getWeekDay(new Date(year, month, 1).getDay());
-    let childNodes = element.childNodes;
-    let dayCounter = 0;
-    previousMonth -= beginDay;
-    let endMonthGrid = daysInMonth + beginDay;
-    document.getElementById("month-name").innerText = monthNames[month] + " - " + year;
-    for (let i = 0; i < beginDay; i++) {
-
-        let div = childNodes[i];
-        previousMonth++;
-        if (div.ELEMENT_NODE) {
-            div.innerText = previousMonth;
-            div.className = "other-month";
+    try{
+        console.log(elementName, day, month, year);
+        let newDate = new Date(year, month, day);
+        let previousMonth = getDaysInMonth(month, year);
+        let daysInMonth = getDaysInMonth(month + 1, year);
+        let element = document.getElementById(elementName);
+        let beginDay = getWeekDay(new Date(year, month, 1).getDay());
+        let childNodes = element.childNodes;
+        let dayCounter = 0;
+        previousMonth -= beginDay;
+        let endMonthGrid = daysInMonth + beginDay;
+        if(elementName == monthCalendarName){
+            document.getElementById("month-name").innerText = monthNames[month] + " - " + year;
         }
+        
+        console.log(childNodes);
+        for (let i = 0; i < beginDay; i++) {
 
-    }
-    for (let i = beginDay; i < endMonthGrid; i++) {
+            let div = childNodes[i];
+            
+            
+            previousMonth++;
+            if (true) {
+                div.innerText = previousMonth;
+                div.className = "other-month";
+            }
 
-        let div = childNodes[i];
-        dayCounter++;
-        if (div.ELEMENT_NODE) {
-            div.className = "";
-            div.innerText = dayCounter;
-            div.setAttribute("onclick","currentDay = "+dayCounter+";calendarShow('day');")
         }
+        for (let i = beginDay; i < endMonthGrid; i++) {
 
-    }
-    for (let i = endMonthGrid; i < boxCount; i++) {
-        let div = childNodes[i];
-        if (div.ELEMENT_NODE) {
-            div.innerText = i - endMonthGrid + 1;
-            div.className = "other-month";
+            let div = childNodes[i];
+            dayCounter++;
+            if (div.ELEMENT_NODE) {
+                div.className = "";
+                div.innerText = dayCounter;
+                div.setAttribute("onclick","currentDay = "+dayCounter+";currentMonth = "+month+"; currentYear = "+year+";calendarShow('day');")
+            }
+
         }
-
+        for (let i = endMonthGrid; i < boxCount; i++) {
+            let div = childNodes[i];
+            if (div.ELEMENT_NODE) {
+                div.innerText = i - endMonthGrid + 1;
+                div.className = "other-month";
+            }
+        }
+    }catch(err){
+        console.log(err);
     }
 }
 
@@ -117,7 +126,6 @@ function resetPlan() {
 }
 
 function planRooms() {
-    console.log(currentDay);
     dayTitle.innerText = currentDay + " - " + monthNames[currentMonth] + " - " + currentYear;
     reservations.forEach(reservation => {
         if(reservation.day == currentDay && reservation.month - 1 == currentMonth && reservation.year == currentYear){
@@ -269,7 +277,7 @@ function createYear() {
         }
         monthYear.appendChild(nameGrid);
         let monthCalendar = document.createElement("div");
-        monthCalendar.id = "month-calendar";
+        monthCalendar.id = "month-calendar-"+monthNames[i];
         monthCalendar.className = "month-grid";
         for (let i = 0; i < boxCount; i++) {
             let box = document.createElement("div");
@@ -280,6 +288,10 @@ function createYear() {
 
         yearCalendar.appendChild(monthYear);
 
+    }
+    for (let i = 0; i < monthNames.length; i++) {
+        addDaysToMonth(("month-calendar-"+(monthNames[i])),0,i,2022);
+        
     }
 
 }
