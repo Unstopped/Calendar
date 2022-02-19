@@ -44,9 +44,11 @@
         let yearCalendar = document.getElementById("year-calendar");
         let weekCalendar = document.getElementById("week-calendar");
         let dayContainer = document.getElementById("day");
-        let dateTitle = document.createElement("h1");
-        dateTitle.className = "day-title";
-        dayContainer.appendChild(dateTitle);
+        let dayTitle = document.createElement("h1");
+        dayTitle.className = "day-title";
+        
+        dayTitle.id="day-title";
+        dayContainer.appendChild(dayTitle);
         let dayCalendar = document.createElement("div");
         dayCalendar.id = "day-grid";
         dayContainer.appendChild(dayCalendar);
@@ -70,6 +72,7 @@
         let currentDay = date.getDate();
         let currentMonth = date.getMonth();
         let currentYear = date.getFullYear();
+        
         let monthNames = ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"];
         //patient examples
         let reservations = [{ room: 1, plan: "implant", name: "Mustafa Kemal", from: 8, end: 12, warning: "medisch", day: 18, month: 2, year: 2022 },

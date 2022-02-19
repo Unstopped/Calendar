@@ -124,14 +124,9 @@ function resetPlan() {
 }
 
 function planRooms() {
-    dateTitle.innerText = currentDay + " - " + (currentMonth+1) + " - " + currentYear;
-
+    dayTitle.innerText = currentDay + " - " + monthNames[currentMonth] + " - " + currentYear;
     reservations.forEach(reservation => {
-        console.log(currentDay, currentMonth, currentYear);
-        console.log(reservation.day, reservation.month - 1, reservation.year);
         if(reservation.day == currentDay && reservation.month - 1 == currentMonth && reservation.year == currentYear){
-
-        
         let start = reservation.from;
         let end = reservation.end;
         let room = reservation.room
@@ -202,7 +197,7 @@ function createRooms() {
         dayCalendar.appendChild(roomContainer);
         roomContainer.appendChild(roomName);
         roomContainer.appendChild(room);
-
+        
     }
     planRooms();
 }
