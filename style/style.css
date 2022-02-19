@@ -238,4 +238,10 @@
   background-color: #242424 !important;
   opacity: 0.3;
 }
+
+.day-title {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
 /*# sourceMappingURL=style.css.map */

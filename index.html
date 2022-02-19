@@ -25,9 +25,6 @@
 
         </div>
         <div id="day" style="display:none">
-            <div id="day-grid">
-
-            </div>
         </div>
         <div class="controls">
             <div class="back" onclick="previous()">
@@ -40,13 +37,19 @@
     </div>
     <script async>
         let year = document.getElementById("year");
-let month = document.getElementById("month");
-// let week = document.getElementById("week");
-let day = document.getElementById("day");
-let monthCalendar = document.getElementById("month");
-let yearCalendar = document.getElementById("year-calendar");
-let weekCalendar = document.getElementById("week-calendar");
-let dayCalendar = document.getElementById("day-grid");
+        let month = document.getElementById("month");
+        // let week = document.getElementById("week");
+        let day = document.getElementById("day");
+        let monthCalendar = document.getElementById("month");
+        let yearCalendar = document.getElementById("year-calendar");
+        let weekCalendar = document.getElementById("week-calendar");
+        let dayContainer = document.getElementById("day");
+        let dateTitle = document.createElement("h1");
+        dateTitle.className = "day-title";
+        dayContainer.appendChild(dateTitle);
+        let dayCalendar = document.createElement("div");
+        dayCalendar.id = "day-grid";
+        dayContainer.appendChild(dayCalendar);
         
         let date = new Date();
         let monthCalendarName = "month-calendar-big";

@@ -24,7 +24,7 @@ function next() {
     } else if (loaded == "day") {
         console.log("next day");
         if(getDaysInMonth(currentMonth,currentYear) == currentDay ){
-            currentDay = 0;
+            currentDay = 1;
             if(currentMonth == 11){
                 currentMonth = 0;
                 currentYear++;
@@ -52,7 +52,19 @@ function previous() {
     } else if (loaded == "year") {
 
     } else if (loaded == "day") {
-
+        if(currentDay == 1 ){
+            if(currentMonth == 0){
+                currentYear--;
+                currentMonth = 11;
+                currentDay = getDaysInMonth(currentMonth,currentYear);
+            }else{
+                currentMonth--;
+                currentDay = getDaysInMonth(currentMonth,currentYear);
+            }
+        }else{
+            currentDay--;
+        }
+        createRooms();
     }
 }
 
@@ -108,10 +120,12 @@ function addDaysToMonth(elementName, day, month, year) {
 
 function resetPlan() {
     document.getElementById("day-grid").innerHTML = null;
+    
 }
 
 function planRooms() {
-    
+    dateTitle.innerText = currentDay + " - " + (currentMonth+1) + " - " + currentYear;
+
     reservations.forEach(reservation => {
         console.log(currentDay, currentMonth, currentYear);
         console.log(reservation.day, reservation.month - 1, reservation.year);
