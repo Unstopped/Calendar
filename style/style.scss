@@ -80,6 +80,11 @@
     .month-year{
         width:230px;
         margin:auto;
+        padding:10px;
+    }
+    .month-year:hover{
+        transition: box-shadow 0.2s;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.555);
     }
     >div{
         .month-grid{
