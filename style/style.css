@@ -1,0 +1,211 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.grid-7 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 14% 14% 14% 14% 14% 14% 14%;
+      grid-template-columns: 14% 14% 14% 14% 14% 14% 14%;
+}
+
+.month-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 10px;
+      grid-template-areas: "a a a a a a a" ". . . . . . ." ". . . . . . ." ". . . . . . ." ". . . . . . ." ". . . . . . ." ". . . . . . .";
+}
+
+.day-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+      grid-template-areas: ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . .";
+}
+
+.year-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(320px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1rem;
+}
+
+#year {
+  display: block;
+}
+
+.calendar {
+  padding: 30px;
+  width: 95%;
+  -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.555);
+          box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.555);
+  margin: auto;
+  margin-top: 50px;
+}
+
+.calendar .header {
+  display: -ms-grid;
+  display: grid;
+  width: 100%;
+  -ms-grid-columns: auto auto auto auto;
+      grid-template-columns: auto auto auto auto;
+  border-bottom: 1px solid black;
+}
+
+.calendar .header > span {
+  padding: 10px;
+  margin: 10px;
+}
+
+.calendar .header > span:hover {
+  text-decoration: underline;
+}
+
+.year-grid .month-year {
+  width: 230px;
+  margin: auto;
+}
+
+.year-grid > div .month-grid > div {
+  height: 20px;
+  width: 20px;
+}
+
+.month-grid {
+  margin: auto;
+  height: 100%;
+}
+
+.month-grid > div {
+  border: 1px solid black;
+  width: 50px;
+  height: 50px;
+  background-color: #3d5a66;
+}
+
+.month-grid > div:hover {
+  -webkit-transition: background-color 0.1s;
+  transition: background-color 0.1s;
+  background-color: #7cd6fa;
+}
+
+.controls {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
+}
+
+.controls .back {
+  float: left;
+}
+
+.controls .forward {
+  float: right;
+  text-align: right;
+}
+
+.name-grid {
+  height: 20px;
+  width: 100%;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 7;
+  grid-area: a;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.name-grid .names {
+  text-align: center;
+  font-size: 0.7em;
+  width: 20px;
+}
+
+.month-name {
+  text-transform: capitalize;
+}
+
+#day-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(300px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1rem;
+}
+
+#day-grid h2 {
+  padding: 20px;
+}
+
+#day-grid .room {
+  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.555);
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.555);
+  color: white;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid black;
+  background-color: #2f2f2f;
+  width: 300px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50px auto;
+      grid-template-columns: 50px auto;
+}
+
+#day-grid .room > span {
+  padding: 5px;
+  border-bottom: 1px solid #b8b8b8;
+}
+
+#day-grid .room .reservation {
+  font-size: 0.8em;
+}
+
+#month {
+  text-align: center;
+}
+
+#month .name-grid, #month .month-grid {
+  width: 500px;
+  margin: auto;
+}
+
+#month .month-grid {
+  color: white;
+}
+
+.warning {
+  display: block;
+  padding: 10px;
+}
+
+.warning #on {
+  background-color: red;
+}
+
+.warning #off {
+  background-color: none;
+}
+
+.other-month {
+  background-color: #242424 !important;
+  opacity: 0.3;
+}
+/*# sourceMappingURL=style.css.map */

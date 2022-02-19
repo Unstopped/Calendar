@@ -1,0 +1,190 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.grid-7{
+    display:grid;
+    grid-template-columns: 14% 14% 14% 14% 14% 14% 14%;
+}
+.month-grid{
+    display: grid; 
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+  gap:10px;
+  grid-template-areas: 
+    "a a a a a a a"
+    ". . . . . . ."
+    ". . . . . . ."
+    ". . . . . . ."
+    ". . . . . . ."
+    ". . . . . . ."
+    ". . . . . . ."; 
+    
+}
+.day-grid{
+    
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . .";  
+}
+.year-grid{
+    display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1rem;
+}
+#year{
+    display:block;
+}
+.calendar{
+    padding:30px;
+    width:95%;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.555);
+    margin:auto;
+    margin-top:50px;
+    .header{
+        display:grid;
+        width:100%;
+        grid-template-columns: auto auto auto auto;
+        border-bottom: 1px solid black;
+        >span{
+            padding:10px;
+            margin:10px;
+
+        }
+        >span:hover{
+            text-decoration: underline;
+        }
+    }
+    
+    
+    
+}
+.year-grid{
+    .month-year{
+        width:230px;
+        margin:auto;
+    }
+    >div{
+        .month-grid{
+            >div{
+                height:20px;
+                width:20px;
+            }
+        }
+    }
+}
+.month-grid{
+    margin:auto;
+    
+    height:100%;
+    >div{
+        border:1px solid black;
+        width:50px;
+        height:50px;
+        background-color:rgb(61, 90, 102);
+    }
+    >div:hover{
+        transition: background-color 0.1s;
+        background-color:rgb(124, 214, 250);
+    }
+    
+
+}
+.controls{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    .back{
+        float: left;
+        
+    }
+    .forward{
+        float: right;
+        text-align: right;
+    }
+}
+.name-grid{
+    height:20px;
+    width:100%;
+    grid-area: a;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap:10px;
+    .names{
+    text-align: center;
+    font-size: 0.7em;
+    width:20px;
+    }
+}
+.month-name{
+    text-transform: capitalize;
+}
+
+#day-grid{
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 1rem;
+    h2{
+        padding:20px;
+    }
+    .room{
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.555);
+        color:white;
+        margin:auto;
+        padding:20px;
+        border: 1px solid black;
+        background-color:rgb(47, 47, 47);
+        width:300px;
+        display:grid;
+        grid-template-columns: 50px auto;
+        >span{
+            padding:5px;
+            border-bottom: 1px solid rgb(184, 184, 184);
+        }
+        .reservation{
+            font-size: 0.8em;
+        }
+    }
+}
+#month{
+    text-align: center;
+    .name-grid,.month-grid{
+        width:500px;
+        margin:auto;
+        
+    }
+    .month-grid{
+        color:white;
+    }
+}
+.warning{
+    display: block;
+    padding:10px;
+    #on{
+        background-color:red;
+    }
+    #off{
+        background-color:none;
+    }
+}
+.other-month{
+    background-color:rgb(36, 36, 36) !important;
+    opacity: 0.3;
+}
