@@ -112,6 +112,26 @@
   background-color: #7cd6fa;
 }
 
+.month-grid > .one {
+  background-color: #a1c057;
+}
+
+.month-grid > .two {
+  background-color: #ffda74;
+}
+
+.month-grid > .three {
+  background-color: #ffbf58;
+}
+
+.month-grid > .four {
+  background-color: #ff9d5c;
+}
+
+.month-grid > .five {
+  background-color: #e75a4d;
+}
+
 .controls {
   display: -ms-grid;
   display: grid;
