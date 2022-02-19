@@ -1,5 +1,4 @@
 
-
 let loaded = "year";
 //function to get the day of the week starting from monday instead of sunday
 function getWeekDay(d) {
@@ -35,9 +34,6 @@ function next() {
             currentDay++;
         }
         createRooms();
-
-            
-
     }
 }
 function previous() {
@@ -87,15 +83,11 @@ function addDaysToMonth(elementName, day, month, year) {
     for (let i = 0; i < beginDay; i++) {
 
         let div = childNodes[i];
-
         previousMonth++;
-
-
         if (div.ELEMENT_NODE) {
             div.innerText = previousMonth;
             div.className = "other-month";
         }
-
 
     }
     for (let i = beginDay; i < endMonthGrid; i++) {
@@ -105,6 +97,7 @@ function addDaysToMonth(elementName, day, month, year) {
         if (div.ELEMENT_NODE) {
             div.className = "";
             div.innerText = dayCounter;
+            div.setAttribute("onclick","currentDay = "+dayCounter+";calendarShow('day');")
         }
 
     }
@@ -124,6 +117,7 @@ function resetPlan() {
 }
 
 function planRooms() {
+    console.log(currentDay);
     dayTitle.innerText = currentDay + " - " + monthNames[currentMonth] + " - " + currentYear;
     reservations.forEach(reservation => {
         if(reservation.day == currentDay && reservation.month - 1 == currentMonth && reservation.year == currentYear){
@@ -247,6 +241,7 @@ function calendarShow(type) {
     }
     else if (type == "day") {
         loaded = "day";
+        createRooms();
         // week.style.display = "none";
         month.style.display = "none";
         day.style.display = "block";
