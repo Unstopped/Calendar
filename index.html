@@ -13,6 +13,8 @@
 
     <div class="calendar">
         <div class="header">
+            <span class="back" onclick="previous()"><-- </span>
+            <span class="forward" onclick="next()"> --> </span>
             <span onclick="calendarShow('year')">Year</span>
             <span onclick="calendarShow('month')">Month</span>
             <span onclick="calendarShow('day')">Day</span>
@@ -23,14 +25,6 @@
 
         </div>
         <div id="day" style="display:none">
-        </div>
-        <div class="controls">
-            <div class="back" onclick="previous()">
-                <-- </div>
-                    <div class="forward" onclick="next()"> --> </div>
-            </div>
-
-
         </div>
     </div>
     <script async>
