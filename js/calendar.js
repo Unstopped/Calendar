@@ -21,7 +21,8 @@ function next() {
         }
         addDaysToMonth(monthCalendarName, currentDay, currentMonth, currentYear);
     } else if (loaded == "year") {
-
+        currentYear++;
+        addYearDays();
     } else if (loaded == "day") {
         if(getDaysInMonth(currentMonth,currentYear) == currentDay ){
             currentDay = 1;
@@ -47,7 +48,8 @@ function previous() {
         }
         addDaysToMonth(monthCalendarName, currentDay, currentMonth, currentYear);
     } else if (loaded == "year") {
-
+        currentYear--;
+        addYearDays();
     } else if (loaded == "day") {
         if(currentDay == 1 ){
             if(currentMonth == 0){
@@ -307,11 +309,13 @@ function createYear() {
         yearCalendar.appendChild(monthYear);
 
     }
+    addYearDays();
+}
+function addYearDays(){
     for (let i = 0; i < monthNames.length; i++) {
-        addDaysToMonth(("month-calendar-"+(monthNames[i])),0,i,2022);
+        addDaysToMonth(("month-calendar-"+(monthNames[i])),0,i,currentYear);
         
     }
-
 }
 myInterval = setInterval(warningAlert, 500);
 
