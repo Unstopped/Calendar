@@ -83,8 +83,8 @@ reservations.forEach(reservation => {
 });
 counter -= 3;
 counter = Math.round((counter/ 3) / 2);
-if(counter > colorClasses.length){
-    counter =colorClasses.length;
+if(counter >= colorClasses.length){
+    counter = colorClasses.length - 1;
 }
 return colorClasses[counter];
 }
