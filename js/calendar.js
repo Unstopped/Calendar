@@ -67,10 +67,25 @@ function getDaysInMonth(month, year) {
     let val = new Date(year, month, 0).getDate();
     return val;
 }
+function addColorMonth(day,month,year){
+//returns class for the day of month
+let counter = 0;
+reservations.forEach(reservation => {
+    
+    if(reservation.day == day && reservation.month -1 == month && reservation.year == year){
+        let total = reservation.end - reservation.from;
+        counter += total;
+        console.log(day,month,year);
+    }
+});
+counter -= 3;
+counter = Math.round(counter / 2);
+
+return colorClasses[counter];
+}
 
 function addDaysToMonth(elementName, day, month, year) {
     try{
-        console.log(elementName, day, month, year);
         let newDate = new Date(year, month, day);
         let previousMonth = getDaysInMonth(month, year);
         let daysInMonth = getDaysInMonth(month + 1, year);
@@ -84,7 +99,6 @@ function addDaysToMonth(elementName, day, month, year) {
             document.getElementById("month-name").innerText = monthNames[month] + " - " + year;
         }
         
-        console.log(childNodes);
         for (let i = 0; i < beginDay; i++) {
 
             let div = childNodes[i];
@@ -93,7 +107,7 @@ function addDaysToMonth(elementName, day, month, year) {
             previousMonth++;
             if (true) {
                 div.innerText = previousMonth;
-                div.className = "other-month";
+                div.className = "other-month"
             }
 
         }
@@ -102,7 +116,7 @@ function addDaysToMonth(elementName, day, month, year) {
             let div = childNodes[i];
             dayCounter++;
             if (div.ELEMENT_NODE) {
-                div.className = "";
+                div.className = addColorMonth(dayCounter,month,year);
                 div.innerText = dayCounter;
                 div.setAttribute("onclick","currentDay = "+dayCounter+";currentMonth = "+month+"; currentYear = "+year+";calendarShow('day');")
             }

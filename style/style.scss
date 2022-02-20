@@ -48,6 +48,14 @@
     display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 1rem;
+  .month-year{
+      .month-grid{
+          >div{
+              font-size: 0.6em;
+              text-align: center;
+          }
+      }
+  }
 }
 #year{
     display:block;
@@ -104,6 +112,7 @@
         width:50px;
         height:50px;
         background-color:rgb(61, 90, 102);
+        color:white;
     }
     >div:hover{
         transition: background-color 0.1s;

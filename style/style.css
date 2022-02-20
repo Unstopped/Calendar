@@ -43,6 +43,11 @@
   grid-gap: 1rem;
 }
 
+.year-grid .month-year .month-grid > div {
+  font-size: 0.6em;
+  text-align: center;
+}
+
 #year {
   display: block;
 }
@@ -104,6 +109,7 @@
   width: 50px;
   height: 50px;
   background-color: #3d5a66;
+  color: white;
 }
 
 .month-grid > div:hover {
