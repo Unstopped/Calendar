@@ -248,11 +248,13 @@ function calendarShow(type) {
 
     if (type == "month") {
         //month calendar
+        
         loaded = "month";
         // week.style.display = "none";
         month.style.display = "block";
         day.style.display = "none";
         year.style.display = "none";
+        addDaysToMonth(monthCalendarName, currentDay, currentMonth, currentYear);
     }
     else if (type == "year") {
         loaded = "year";
@@ -264,11 +266,12 @@ function calendarShow(type) {
     }
     else if (type == "day") {
         loaded = "day";
-        createRooms();
+        
         // week.style.display = "none";
         month.style.display = "none";
         day.style.display = "block";
         year.style.display = "none";
+        createRooms();
     }
 }
 
