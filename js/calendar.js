@@ -2,11 +2,13 @@
 let loaded = "year";
 //function to get the day of the week starting from monday instead of sunday
 function getWeekDay(d) {
-    if (d < 0) {
-        return 6;
-    } else {
-        return d - 1;
+    d = d.getDay();
+    if(d == 0){
+        d = 6;
+    }else{
+        d-=1
     }
+    return d;
 }
 
 function next() {
@@ -75,22 +77,22 @@ reservations.forEach(reservation => {
     if(reservation.day == day && reservation.month -1 == month && reservation.year == year){
         let total = reservation.end - reservation.from;
         counter += total;
-        console.log(day,month,year);
     }
 });
 counter -= 3;
-counter = Math.round(counter / 2);
+counter = Math.round((counter/ 3) / 2);
 
 return colorClasses[counter];
 }
 
 function addDaysToMonth(elementName, day, month, year) {
     try{
+        
         let newDate = new Date(year, month, day);
         let previousMonth = getDaysInMonth(month, year);
         let daysInMonth = getDaysInMonth(month + 1, year);
         let element = document.getElementById(elementName);
-        let beginDay = getWeekDay(new Date(year, month, 1).getDay());
+        let beginDay = getWeekDay(new Date(year, month, 1));
         let childNodes = element.childNodes;
         let dayCounter = 0;
         previousMonth -= beginDay;
@@ -100,10 +102,7 @@ function addDaysToMonth(elementName, day, month, year) {
         }
         
         for (let i = 0; i < beginDay; i++) {
-
             let div = childNodes[i];
-            
-            
             previousMonth++;
             if (true) {
                 div.innerText = previousMonth;
@@ -291,7 +290,7 @@ function createYear() {
         }
         monthYear.appendChild(nameGrid);
         let monthCalendar = document.createElement("div");
-        monthCalendar.id = "month-calendar-"+monthNames[i];
+        monthCalendar.id ="month-calendar-"+monthNames[i];
         monthCalendar.className = "month-grid";
         for (let i = 0; i < boxCount; i++) {
             let box = document.createElement("div");
