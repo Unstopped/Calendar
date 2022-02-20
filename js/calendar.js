@@ -91,7 +91,6 @@ return colorClasses[counter];
 
 function addDaysToMonth(elementName, day, month, year) {
     try{
-        
         let newDate = new Date(year, month, day);
         let previousMonth = getDaysInMonth(month, year);
         let daysInMonth = getDaysInMonth(month + 1, year);
@@ -278,7 +277,13 @@ function calendarShow(type) {
 }
 
 function createYear() {
-
+    let yearTitle = document.createElement("h1");
+    yearTitle.id = "year-title";
+    year.appendChild(yearTitle);
+    let yearCalendar = document.createElement("div");
+    yearCalendar.className = "year-grid";
+    yearCalendar.id = "year-calendar";
+    year.appendChild(yearCalendar);
     for (let i = 0; i < monthNames.length; i++) {
         let monthYear = document.createElement("div");
         monthYear.id = "month-" + monthNames[i];
@@ -304,14 +309,16 @@ function createYear() {
             monthCalendar.appendChild(box);
 
         }
+        
         monthYear.appendChild(monthCalendar);
-
         yearCalendar.appendChild(monthYear);
 
     }
+    
     addYearDays();
 }
 function addYearDays(){
+    document.getElementById("year-title").innerText = currentYear;
     for (let i = 0; i < monthNames.length; i++) {
         addDaysToMonth(("month-calendar-"+(monthNames[i])),0,i,currentYear);
         
